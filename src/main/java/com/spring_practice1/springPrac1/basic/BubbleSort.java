@@ -1,4 +1,4 @@
-package com.spring_practice1.springPrac1;
+package com.spring_practice1.springPrac1.basic;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
