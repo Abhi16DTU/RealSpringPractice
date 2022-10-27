@@ -1,5 +1,9 @@
 package com.spring_practice1.springPrac1.basic;
 
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
@@ -9,6 +13,8 @@ import org.springframework.stereotype.Component;
 @Component
 @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class BinarySearchImpl {
+
+    Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     @Qualifier("quick")
@@ -29,5 +35,18 @@ public class BinarySearchImpl {
 
         return 3;
     }
+
+    @PostConstruct
+    public void postConstruct() {
+        // here we do some initialization of the bean , like setting up some values
+        logger.info("postConstruct");
+    }
+
+    @PreDestroy
+    public void preDestroy() {
+        // here we do some cleanup of the bean , like closing some connections
+        logger.info("preDestroy");
+    }
+
 
 }
