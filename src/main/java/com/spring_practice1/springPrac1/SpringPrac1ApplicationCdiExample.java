@@ -2,11 +2,16 @@ package com.spring_practice1.springPrac1;
 
 import com.spring_practice1.springPrac1.CdiPackage.CdiComponent;
 import com.spring_practice1.springPrac1.basic.BinarySearchImpl;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+//import org.springframework.boot.SpringApplication;
+//import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 
-@SpringBootApplication
+//@SpringBootApplication
+@Configuration
+@ComponentScan
 public class SpringPrac1ApplicationCdiExample {
 
 	public static void main(String[] args) {
@@ -18,7 +23,7 @@ public class SpringPrac1ApplicationCdiExample {
 
 //		BinarySearchImpl binarySearch = new BinarySearchImpl(new QuickSort());
 //		System.out.println(binarySearch.binarySearch(new int[] {1,2,3,4,5}, 3));
-		ApplicationContext applicationContext = SpringApplication.run(SpringPrac1ApplicationCdiExample.class, args);
+		ApplicationContext applicationContext = new AnnotationConfigApplicationContext(SpringPrac1ApplicationCdiExample.class);
 		CdiComponent cdiComponent = applicationContext.getBean(CdiComponent.class);
 
 		System.out.println(cdiComponent.getCdiJDBC());

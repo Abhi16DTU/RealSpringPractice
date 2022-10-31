@@ -1,11 +1,16 @@
 package com.spring_practice1.springPrac1;
 
 import com.spring_practice1.springPrac1.basic.BinarySearchImpl;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+//import org.springframework.boot.SpringApplication;
+//import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 
-@SpringBootApplication
+//@SpringBootApplication
+@Configuration
+@ComponentScan
 public class SpringPrac1Application {
 
 	public static void main(String[] args) {
@@ -17,10 +22,11 @@ public class SpringPrac1Application {
 
 //		BinarySearchImpl binarySearch = new BinarySearchImpl(new QuickSort());
 //		System.out.println(binarySearch.binarySearch(new int[] {1,2,3,4,5}, 3));
-		ApplicationContext applicationContext = SpringApplication.run(SpringPrac1Application.class, args);
+		AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(SpringPrac1Application.class);
+//		ApplicationContext applicationContext = SpringApplication.run(SpringPrac1Application.class, args);
 		BinarySearchImpl binarySearch = applicationContext.getBean(BinarySearchImpl.class);
 		System.out.println(binarySearch.binarySearch(new int[] {1,2,3,4,5}, 3));
-
+		applicationContext.close();
 	}
 
 }
